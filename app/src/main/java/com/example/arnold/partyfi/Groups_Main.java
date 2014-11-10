@@ -1,6 +1,5 @@
 package com.example.arnold.partyfi;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -8,11 +7,15 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-public class MainActivity extends ActionBarActivity
+/**
+ * Created by Arnold on 11/9/2014.
+ */
+public class Groups_Main extends ActionBarActivity
 {
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.main_group_options);
     }
 
     @Override
@@ -58,5 +61,4 @@ public class MainActivity extends ActionBarActivity
         Intent intent = new Intent(this, Parties_Main.class);
         startActivity(intent);
     }
-
 }

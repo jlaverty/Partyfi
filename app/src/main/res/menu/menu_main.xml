@@ -1,13 +1,20 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
-    <item android:id="@+id/action_settings"
-          android:title="@string/action_settings"
-          android:icon="@drawable/ic_launcher"
-          android:orderInCategory="100"
-          android:showAsAction="never" />
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:Partyfi="http://schemas.android.com/apk/res-auto"
+    tools:context=".MainActivity">
     <item android:id="@+id/groups"
           android:title="Groups"
           android:orderInCategory="100"
           android:icon="@drawable/ic_launcher"
-          android:showAsAction="never" />
+          Partyfi:showAsAction="ifRoom"/>
+    <item android:id="@+id/parties"
+        android:title="parties"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_launcher"
+        Partyfi:showAsAction="ifRoom"/>
+    <item android:id="@+id/friends"
+        android:title="friends"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_launcher"
+        Partyfi:showAsAction="ifRoom"/>
 </menu>
