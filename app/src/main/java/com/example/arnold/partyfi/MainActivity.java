@@ -2,7 +2,6 @@ package com.example.arnold.partyfi;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
@@ -10,15 +9,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.support.v4.view.ViewPager;
 
-import android.app.ActionBar;
-import android.app.FragmentTransaction;
-import android.content.Intent;
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,15 +56,18 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         });
 
         // For each of the sections in the app, add a tab to the action bar.
-        for (int i = 0; i < mAppSectionsPagerAdapter.getCount(); i++) {
+        //for (int i = 0; i < mAppSectionsPagerAdapter.getCount(); i++) {
             // Create a tab with text corresponding to the page title defined by the adapter.
             // Also specify this Activity object, which implements the TabListener interface, as the
             // listener for when this tab is selected.
-            actionBar.addTab(
-                    actionBar.newTab()
-                            .setText(mAppSectionsPagerAdapter.getPageTitle(i))
-                            .setTabListener(this));
-        }
+            //actionBar.addTab(actionBar.newTab()
+                            //.setText(mAppSectionsPagerAdapter.getPageTitle(i))
+                           // .setTabListener(this));
+        //}
+
+        actionBar.addTab(actionBar.newTab().setText("Groups!").setTabListener(this));
+        actionBar.addTab(actionBar.newTab().setText("Friends!").setTabListener(this));
+        actionBar.addTab(actionBar.newTab().setText("Party !").setTabListener(this));
     }
 
     @Override
@@ -98,39 +94,15 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         return super.onCreateOptionsMenu(menu);
     }
 
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle presses on the action bar items
         switch (item.getItemId()) {
-            case R.id.groups:
-                groupsGo();
-                return true;
-            case R.id.parties:
-                partiesGo();
-                return true;
-            case R.id.friends:
-                friendsGo();
+            case R.id.Settings:
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }
-
-    public void friendsGo()
-    {
-        Intent intent = new Intent(this, Friends_Main.class);
-        startActivity(intent);
-    }
-
-    public void groupsGo()
-    {
-        Intent intent = new Intent(this, Groups_Main.class);
-        startActivity(intent);
-    }
-
-    public void partiesGo()
-    {
-        Intent intent = new Intent(this, Parties_Main.class);
-        startActivity(intent);
     }
 
     public static class AppSectionsPagerAdapter extends FragmentPagerAdapter
@@ -140,58 +112,92 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         }
 
         @Override
-        public Fragment getItem(int i) {
-            switch (i) {
+        public Fragment getItem(int i)
+        {
+            switch (i)
+            {
                 case 0:
                     // The first section of the app is the most interesting -- it offers
                     // a launchpad into the other demonstrations in this example application.
-                    return new LaunchpadSectionFragment();
+                    Fragment fragmentGroups = new DummySectionFragment();
+                    Bundle argsGroups = new Bundle();
+                    argsGroups.putString("test", "test");
+                    fragmentGroups.setArguments(argsGroups);
+                    return new LaunchpadGroupsFragment();
+                case 1:
+                    Fragment fragmentFriends = new DummySectionFragment();
+                    Bundle argsFriends = new Bundle();
+                    argsFriends.putString("test", "test");
+                    fragmentFriends.setArguments(argsFriends);
+                    return new LaunchpadFriendsFragment();
+                case 2:
+                    Fragment fragmentParties = new DummySectionFragment();
+                    Bundle argsParties = new Bundle();
+                    argsParties.putString("test", "test");
+                    fragmentParties.setArguments(argsParties);
+                    return new LaunchpadPartiesFragment();
 
                 default:
-                    // The other sections of the app are dummy placeholders.
                     Fragment fragment = new DummySectionFragment();
                     Bundle args = new Bundle();
-                    args.putInt(DummySectionFragment.ARG_SECTION_NUMBER, i + 1);
+                    args.putString("test", "test");
                     fragment.setArguments(args);
                     return fragment;
             }
         }
 
-        public static class LaunchpadSectionFragment extends Fragment {
+        public static class LaunchpadGroupsFragment extends Fragment
+        {
 
             @Override
-            public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                     Bundle savedInstanceState) {
-                View rootView = inflater.inflate(R.layout.activity_main, container, false);
-
-                // Demonstration of a collection-browsing activity.
-                rootView.findViewById((R.id.parties))
-                        .setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                //Intent intent = new Intent(getActivity(), CollectionDemoActivity.class);
-                                //startActivity(intent);
-                            }
-                        });
+            public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+            {
+                View rootView = inflater.inflate(R.layout.main_group_options, container, false);
 
                 return rootView;
             }
         }
 
+        public static class LaunchpadFriendsFragment extends Fragment
+        {
+            @Override
+            public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+            {
+                View rootView = inflater.inflate(R.layout.main_friends_options, container, false);
+
+                return rootView;
+            }
+        }
+
+        public static class LaunchpadPartiesFragment extends Fragment
+        {
+            @Override
+            public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+            {
+                View rootView = inflater.inflate(R.layout.main_party_options, container, false);
+
+                return rootView;
+            }
+        }
+
+
         /**
          * A dummy fragment representing a section of the app, but that simply displays dummy text.
          */
-        public static class DummySectionFragment extends Fragment {
+        public static class DummySectionFragment extends Fragment
+        {
 
-            public static final String ARG_SECTION_NUMBER = "section_number";
+            public static final String ARG_SECTION_NUMBER = "test";
 
             @Override
-            public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                     Bundle savedInstanceState) {
+            public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+            {
                 View rootView = inflater.inflate(R.layout.fragment_section_dummy, container, false);
                 Bundle args = getArguments();
-                ((TextView) rootView.findViewById(android.R.id.text1)).setText(
-                        getString(R.string.action_settings, args.getInt(ARG_SECTION_NUMBER)));
+                ((TextView) rootView.findViewById(android.R.id.text1)).setText
+                (
+                        getString(R.string.action_settings, args.getInt(ARG_SECTION_NUMBER))
+                );
                 return rootView;
             }
         }
