@@ -2,6 +2,7 @@ package com.example.arnold.partyfi;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
@@ -70,6 +71,14 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         actionBar.addTab(actionBar.newTab().setText("Party !").setTabListener(this));
     }
 
+    /** Called when the user clicks the Send button */
+    public void getMap(View view) {
+        Intent intent = new Intent(this, MapActivity.class);
+//        EditText editText = (EditText) findViewById(R.id.edit_message);
+//        String message = editText.getText().toString();
+//        intent.putExtra(EXTRA_MESSAGE, message);
+        startActivity(intent);
+    }
     @Override
     public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
     }

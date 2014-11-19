@@ -12,5 +12,11 @@
         android:layout_gravity="center"
         android:layout_marginBottom="200dp"
         android:textSize="50sp"/>
+    <Button
+        android:id="@+id/findParty"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Find Party"
+        android:onClick="getMap"/>
 
 </LinearLayout>
