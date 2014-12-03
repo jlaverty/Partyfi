@@ -7,7 +7,8 @@ android {
     defaultConfig {
         applicationId "com.example.arnold.partyfi"
         minSdkVersion 14
-        targetSdkVersion 20
+        //targetSdkVersion 20
+        targetSdkVersion 16
         versionCode 1
         versionName "1.0"
     }

@@ -18,7 +18,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/str_btn_find"
-            android:layout_alignParentRight="true" />
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center" />
 
         <EditText
             android:id="@+id/et_location"
@@ -26,7 +27,10 @@
             android:layout_height="wrap_content"
             android:inputType="text"
             android:hint="@string/hnt_et_location"
-            android:layout_toLeftOf="@id/btn_find" />
+            android:layout_toLeftOf="@id/btn_find"
+            android:layout_gravity="center_horizontal|top" />
+
+
 
         <EditText
             android:id="@+id/datePick"
